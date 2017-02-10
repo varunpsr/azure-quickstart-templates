@@ -4,9 +4,24 @@
   "parameters": {
     "vmSku": {
       "type": "string",
-      "defaultValue": "Standard_D1",
+      "defaultValue": "Standard_A2",
       "metadata": {
         "description": "Size of VMs in the VM Scale Set."
+      }
+    },
+    "windowsOSVersion": {
+      "type": "string",
+      "defaultValue": "2016-Datacenter",
+      "allowedValues": [
+        "2008-R2-SP1",
+        "2012-Datacenter",
+        "2012-R2-Datacenter",
+        "2016-Nano-Server",
+        "2016-Datacenter-with-Containers",
+        "2016-Datacenter"
+      ],
+      "metadata": {
+        "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
       }
     },
     "vmssName": {
@@ -50,7 +65,14 @@
     "loadBalancerFrontEndName": "loadBalancerFrontEnd",
     "loadBalancerBackEndName": "loadBalancerBackEnd",
     "loadBalancerProbeName": "loadBalancerHttpProbe",
-    "loadBalancerNatPoolName": "loadBalancerNatPool"
+    "loadBalancerNatPoolName": "loadBalancerNatPool",
+    "osType": {
+      "publisher": "MicrosoftWindowsServer",
+      "offer": "WindowsServer",
+      "sku": "[parameters('windowsOSVersion')]",
+      "version": "latest"
+    },
+    "imageReference": "[variables('osType')]"
   },
   "resources": [
     {
@@ -75,12 +97,7 @@
             "osDisk": {
               "createOption": "FromImage"
             },
-            "imageReference": {
-              "publisher": "Canonical",
-              "offer": "UbuntuServer",
-              "sku": "14.04.5-LTS",
-              "version": "latest"
-            }
+            "imageReference": "[variables('imageReference')]"
           },
           "osProfile": {
             "computerNamePrefix": "[parameters('vmssName')]",
