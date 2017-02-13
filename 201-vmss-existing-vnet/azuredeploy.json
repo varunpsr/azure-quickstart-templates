@@ -161,7 +161,7 @@
                             "configuration": {
                                 "url": "[parameters('modulesUrl')]",
                                 "script": "InstallNet452.ps1",
-                                "function": "InstallNet452"
+                                "function": "Net452Install"
                             }
                         }
                     }
