@@ -157,7 +157,6 @@
                         "type": "DSC",
                         "typeHandlerVersion": "2.20",
                         "autoUpgradeMinorVersion": true,
-                        "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
                         "settings": {
                             "ModulesUrl": "[parameters('modulesUrl')]",
                             "ConfigurationFunction": "[parameters('configurationFunction')]",
