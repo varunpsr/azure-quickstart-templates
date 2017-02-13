@@ -158,8 +158,11 @@
                         "typeHandlerVersion": "2.20",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
-                            "ModulesUrl": "[parameters('modulesUrl')]",
-                            "ConfigurationFunction": "[parameters('configurationFunction')]"
+                            "configuration": {
+                                "url": "[parameters('modulesUrl')]",
+                                "script": "InstallNet452.ps1",
+                                "function": "InstallNet452"
+                            }
                         }
                     }
                 }
