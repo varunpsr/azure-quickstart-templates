@@ -159,10 +159,7 @@
                         "autoUpgradeMinorVersion": true,
                         "settings": {
                             "ModulesUrl": "[parameters('modulesUrl')]",
-                            "ConfigurationFunction": "[parameters('configurationFunction')]",
-                            "Properties": {
-                                "MachineName": "[parameters('vmName')]"
-                            }
+                            "ConfigurationFunction": "[parameters('configurationFunction')]"
                         }
                     }
                 }
